@@ -11,7 +11,7 @@ import { useLivePreviewNextStaticProps } from "../hooks/useLivePreviewNextStatic
 import getConfig from "next/config";
 
 // LESSON 8 - ACTIVITY 10 - START
-import doEnhance from "../lib/enhancerCF";
+import doEnhance from "../lib/enhancer";
 // LESSON 8 - ACTIVITY 10 - END
 
 export async function getStaticProps({ preview }) {
