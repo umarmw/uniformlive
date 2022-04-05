@@ -1,16 +1,21 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { CanvasClient } from "@uniformdev/canvas";
+import {
+  CanvasClient,
+  CANVAS_DRAFT_STATE,
+  CANVAS_PUBLISHED_STATE,
+} from "@uniformdev/canvas";
 import { Composition, Slot } from "@uniformdev/canvas-react";
 import resolveRenderer from "../lib/resolveRenderer";
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview }) {
   const client = new CanvasClient({
     apiKey: process.env.UNIFORM_API_KEY,
     projectId: process.env.UNIFORM_PROJECT_ID,
   });
   const { composition } = await client.getCompositionBySlug({
     slug: "/",
+    state: preview ? CANVAS_DRAFT_STATE : CANVAS_PUBLISHED_STATE,
   });
   return {
     props: {
