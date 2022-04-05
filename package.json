@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
+    "generate:intents": "uniform optimize manifest download --output ./lib/intentManifest.json --apiKey $UNIFORM_API_KEY",
+    "build": "npm run generate:intents && next build",
     "lint": "next lint"
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "@uniformdev/context": "^15.0.0",
     "@uniformdev/context-next": "^15.0.0",
     "@uniformdev/context-react": "^15.0.0",
+    "@uniformdev/optimize-tracker-browser": "^14.2.0",
     "contentful": "^9.1.18",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.4"

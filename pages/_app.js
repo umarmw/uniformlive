@@ -1,13 +1,11 @@
 import "../styles/globals.css";
-import { UniformContext } from "@uniformdev/context-react";
-import { createUniformContext } from "../lib/context/uniformcontext";
+import { UniformTracker } from "@uniformdev/optimize-tracker-react";
+import localTracker from "../lib/localTracker";
 
-const clientContext = createUniformContext();
-
-export default function MyApp({ Component, pageProps, serverUniformContext }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    <UniformContext context={serverUniformContext ?? clientContext}>
+    <UniformTracker trackerInstance={localTracker}>
       <Component {...pageProps} />
-    </UniformContext>
+    </UniformTracker>
   );
 }
