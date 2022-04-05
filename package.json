@@ -14,12 +14,15 @@
     "react-dom": "18.0.0"
   },
   "devDependencies": {
+    "@contentful/rich-text-html-renderer": "^15.12.0",
     "@uniformdev/canvas": "^15.0.0",
+    "@uniformdev/canvas-contentful": "^15.0.0",
     "@uniformdev/canvas-react": "^15.0.0",
     "@uniformdev/cli": "^15.0.0",
     "@uniformdev/context": "^15.0.0",
     "@uniformdev/context-next": "^15.0.0",
     "@uniformdev/context-react": "^15.0.0",
+    "contentful": "^9.1.18",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.4"
   }

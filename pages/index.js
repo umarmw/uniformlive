@@ -7,11 +7,12 @@ import {
 } from "@uniformdev/canvas";
 import { Composition, Slot } from "@uniformdev/canvas-react";
 import resolveRenderer from "../lib/resolveRenderer";
-
-// LESSON 7 - ACTIVITY 6- START
 import { useLivePreviewNextStaticProps } from "../hooks/useLivePreviewNextStaticProps";
 import getConfig from "next/config";
-// LESSON 7 - ACTIVITY 6 - END
+
+// LESSON 8 - ACTIVITY 10 - START
+import doEnhance from "../lib/enhancer";
+// LESSON 8 - ACTIVITY 10 - END
 
 export async function getStaticProps({ preview }) {
   const client = new CanvasClient({
@@ -22,6 +23,11 @@ export async function getStaticProps({ preview }) {
     slug: "/",
     state: preview ? CANVAS_DRAFT_STATE : CANVAS_PUBLISHED_STATE,
   });
+
+  // LESSON 8 - ACTIVITY 10 - START
+  await doEnhance(composition);
+  // LESSON 8 - ACTIVITY 10 - END
+
   return {
     props: {
       composition,
@@ -29,18 +35,15 @@ export async function getStaticProps({ preview }) {
   };
 }
 
-// LESSON 7 - ACTIVITY 6 - START
 const { publicRuntimeConfig } = getConfig();
 const { uniform } = publicRuntimeConfig;
-// LESSON 7 - ACTIVITY 6 - END
 
 export default function Home({ composition }) {
-  // LESSON 7 - ACTIVITY 6 - START
   useLivePreviewNextStaticProps({
     compositionId: composition?._id,
     projectId: uniform.projectId,
   });
-  // LESSON 7 - ACTIVITY 6 - END
+
   return (
     <Composition data={composition} resolveRenderer={resolveRenderer}>
       <div className={styles.container}>
